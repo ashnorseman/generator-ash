@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= appname %></title>
+    <meta name="description" content="<%= description %>">
+    <meta name="author" content="<%= author %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/dist/js/lib/modernizr.custom.js"></script>
+    <script src="/dist/js/lib/detect-mobile.js"></script>
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="/dist/css/<%= appname.toLowerCase() %>.min.css">
+  </head>
+  <body>
+    {{{body}}}
+    <script src="/dist/js/lib/jquery.min.js"></script>
+    <script src="/dist/js/lib/underscore-min.js"></script>
+    <script src="/dist/js/lib/backbone-min.js"></script>
+    <script src="/dist/js/<%= appname.toLowerCase() %>.min.js"></script>
+    {{{sections.pageScript}}}
+  </body>
+</html>

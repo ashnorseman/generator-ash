@@ -1,0 +1,11 @@
+{
+  "name": "generator-ash",
+  "version": "0.1.0",
+  "description": "Frond-end skeleton",
+  "author": "Ash",
+  "main": "app/index.js",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.20.1"
+  }
+}

@@ -1,0 +1,77 @@
+/**
+ * Created by <%= author %> on <%= currentDate %>.
+ */
+
+
+// Global
+// --------------------------
+
+*,
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+}
+
+
+// Container
+// --------------------------
+
+.container {
+  &:extend(.clearfix all);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @column-gap / 2;
+  padding-right: @column-gap / 2;
+  max-width: @container-width;
+}
+
+.container-full {
+  &:extend(.container);
+  max-width: none;
+}
+
+
+// Row
+// --------------------------
+
+.row {
+  &:extend(.clearfix all);
+  margin-left: -@column-gap / 2;
+  margin-right: -@column-gap / 2;
+}
+
+
+// Columns
+// --------------------------
+
+.make-grid-columns();
+
+.make-grid(xs);
+
+@media @mq-sm {
+  .make-grid(sm);
+}
+
+@media @mq-md {
+  .make-grid(md);
+}
+
+@media @mq-lg {
+  .make-grid(lg);
+}
+
+// For browsers with no media query support
+.float-grid-columns();
+
+.no-mediaqueries {
+  .make-grid();
+}

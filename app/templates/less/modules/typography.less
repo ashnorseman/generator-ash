@@ -1,0 +1,201 @@
+/**
+ * Created by <%= author %> on <%= currentDate %>.
+ */
+
+
+// Global
+// --------------------------
+
+html {
+  background-color: @color-bg;
+  color: @color-text;
+  font: @font-base/@line-base-num @font-family;
+}
+
+.no-mobile {
+  font-family: @font-family-desktop;
+}
+
+
+// Heading
+// --------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &:extend(.gap-v);
+  font-weight: 700;
+  line-height: 1;
+}
+
+h1 {
+  font-size: @font-xl + 4;
+}
+
+h2 {
+  font-size: @font-xl + 2;
+}
+
+h3 {
+  font-size: @font-xl;
+}
+
+h4 {
+  font-size: @font-lg;
+}
+
+h5 {
+  font-size: @font-base;
+}
+
+h6 {
+  font-size: @font-sm;
+}
+
+
+// Paragraph
+// --------------------------
+
+p {
+  &:extend(.gap-v-sm);
+}
+
+
+// List
+// --------------------------
+
+ol,
+ul {
+  &:extend(.gap-v-sm);
+  list-style: none;
+  padding: 0;
+
+  ol,
+  ul {
+    margin: 0;
+  }
+}
+
+.list-ordered {
+  list-style: decimal;
+  padding-left: @gap;
+}
+
+.list-unordered {
+  list-style: disc;
+  padding-left: @gap;
+}
+
+
+// Link
+// --------------------------
+
+a {
+  color: @color-primary;
+  outline: 0;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    color: @color-primary-dark;
+  }
+}
+
+
+// Strong & Emphasize
+// --------------------------
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  text-decoration: underline;
+  font-style: normal;
+}
+
+
+// Table
+// --------------------------
+
+table {
+  &:extend(.gap-v);
+  width: 100%;
+}
+
+th,
+td {
+  padding: (@control-height - @line-base) / 2 @gap / 2;
+  vertical-align: middle;
+}
+
+th {
+  background-color: @color-gray-lightest;
+  text-align: left;
+  white-space: nowrap;
+}
+
+thead {
+  border-top: @border-width solid @color-border;
+}
+
+tbody {
+  border-bottom: @border-width solid @color-border;
+
+  > tr {
+    border-top: @border-width solid @color-border;
+
+    &:nth-child(even) {
+      background-color: @color-bg-light;
+    }
+  }
+}
+
+
+// Line
+// --------------------------
+
+hr {
+  border: 0;
+  border-top: @border-width solid @color-border;
+  margin: @gap 0;
+}
+
+
+// Styled Text
+// --------------------------
+
+.text-primary {
+  color: @color-primary !important;
+}
+
+.text-secondary {
+  color: @color-secondary !important;
+}
+
+.text-ternary {
+  color: @color-ternary !important;
+}
+
+.text-muted {
+  color: @color-gray !important;
+}
+
+
+// Text Alignment
+// --------------------------
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}

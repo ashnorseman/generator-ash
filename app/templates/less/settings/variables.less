@@ -1,0 +1,67 @@
+/**
+ * Created by <%= author %> on <%= currentDate %>.
+ */
+
+
+// Media Query
+// --------------------------
+
+@mq-xs-max: 767px;
+@mq-sm-min: 768px;
+@mq-md-min: 1024px;
+@mq-lg-min: 1280px;
+
+@mq-xs: ~"(max-width: @{mq-xs-max})"; // (0, 767]
+@mq-sm: ~"(min-width: @{mq-sm-min})"; // [768, 1024)
+@mq-md: ~"(min-width: @{mq-md-min})"; // [1024, 1280)
+@mq-lg: ~"(min-width: @{mq-lg-min})"; // [1280, +∞)
+
+
+// Global Settings
+// --------------------------
+
+// Spacing
+@gap:             20px;
+
+// Sizes
+@control-height:  26px;
+
+// Color
+@color-text:      @color-gray-extra-dark;
+@color-border:    @color-gray-lighter;
+@color-bg:        #fff;
+@color-bg-light:  @color-gray-lightest;
+
+// Element Shape
+@border-width:    1px;
+@border-radius:   5px;
+
+// Animation
+@timing:          ease-in-out;
+@duration:        0.3s;
+
+
+// Grid
+// --------------------------
+
+@container-width: 1200px;
+@columns:         12;
+@column-gap:      @gap;
+
+
+// Typography
+// --------------------------
+
+// Text
+@font-xl:       18px;
+@font-lg:       16px;
+@font-base:     14px;
+@font-sm:       12px;
+@line-base:     @gap;
+@line-base-num: 1.4285714;
+@font-family:         ~"'Helvetica Neue',Helvetica,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif";
+@font-family-desktop: ~"'Helvetica Neue',Helvetica,Arial,\5FAE\8F6F\96C5\9ED1, sans-serif";
+
+
+// Z-index
+// --------------------------

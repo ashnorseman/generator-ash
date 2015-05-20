@@ -1,0 +1,27 @@
+{
+  "name": "<%= appname %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "keywords": [ "<%- keywords.join("\", \"") %>" ],
+  "author": "<%= author %>",
+  "dependencies": {
+    "express": "^4.12.4",
+    "express-handlebars": "^2.0.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.10.1",
+    "karma": "^0.12.32",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-mocha": "^0.1.10",
+    "karma-sinon-chai": "^0.3.0",
+    "nodemon": "latest"
+  }
+}

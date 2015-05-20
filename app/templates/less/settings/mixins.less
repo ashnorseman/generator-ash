@@ -1,0 +1,180 @@
+/**
+ * Created by <%= author %> on <%= currentDate %>.
+ */
+
+
+// General Styles
+// --------------------------
+
+// Gaps
+.gap-v-lg {
+  margin-bottom: @gap * 2;
+  margin-top: @gap * 2;
+}
+
+.gap-v {
+  margin-bottom: @gap;
+  margin-top: @gap;
+}
+
+.gap-v-sm {
+  margin-bottom: @gap / 2;
+  margin-top: @gap / 2;
+}
+
+.gap-l {
+  margin-left: @gap;
+}
+
+.gap-r {
+  margin-right: @gap;
+}
+
+// Floats
+.clearfix {
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+// Others
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+// Grid
+// --------------------------
+
+// Common styles for all sizes of grid columns
+.make-grid-columns() {
+
+  .col(@index) {
+    @item: ~".col-@{index},.col-xs-@{index},.col-sm-@{index},.col-md-@{index},.col-lg-@{index}";
+    .col((@index + 1), @item);
+  }
+
+  .col(@index, @list) when (@index =< @columns) {
+    @item: ~".col-@{index},.col-xs-@{index},.col-sm-@{index},.col-md-@{index},.col-lg-@{index}";
+    .col((@index + 1), ~"@{list},@{item}");
+  }
+
+  .col(@index, @list) when (@index > @columns) {
+    @{list} {
+      min-height: 1px;
+      padding-left: @column-gap / 2;
+      padding-right: @column-gap / 2;
+      position: relative;
+    }
+  }
+
+  .col(1);
+}
+
+// Float columns
+.float-grid-columns(@class) {
+
+  .col(@index) {
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), @item);
+  }
+
+  .col(@index, @list) when (@index =< @columns) {
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), ~"@{list},@{item}");
+  }
+
+  .col(@index, @list) when (@index > @columns) {
+    @{list} {
+      float: left;
+    }
+  }
+
+  .col(1);
+}
+
+.float-grid-columns() {
+
+  .col(@index) {
+    @item: ~".no-mediaqueries .col-@{index}";
+    .col((@index + 1), @item);
+  }
+
+  .col(@index, @list) when (@index =< @columns) {
+    @item: ~".no-mediaqueries .col-@{index}";
+    .col((@index + 1), ~"@{list},@{item}");
+  }
+
+  .col(@index, @list) when (@index > @columns) {
+    @{list} {
+      float: left;
+    }
+  }
+
+  .col(1);
+}
+
+// Width
+.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
+  .col-@{class}-@{index} {
+    width: percentage(@index / @columns);
+  }
+}
+
+.calc-grid-column(@index, @type) when (@type = width) and (@index > 0) {
+  .col-@{index} {
+    width: percentage(@index / @columns);
+  }
+}
+
+// Offset
+.calc-grid-column(@index, @class, @type) when (@type = offset) and (@index > 0) {
+  .col-@{class}-offset-@{index} {
+    margin-left: percentage(@index / @columns);
+  }
+}
+.calc-grid-column(@index, @type) when (@type = offset) and (@index > 0) {
+  .col-offset-@{index} {
+    margin-left: percentage(@index / @columns);
+  }
+}
+
+// Basic looping
+.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type);
+  .loop-grid-columns((@index - 1), @class, @type);
+}
+
+.loop-grid-columns(@index, @type) when (@index >= 0) {
+  .calc-grid-column(@index, @type);
+  .loop-grid-columns((@index - 1), @type);
+}
+
+// Create grid for specific class
+.make-grid(@class) {
+  .float-grid-columns(@class);
+  .loop-grid-columns(@columns, @class, width);
+  .loop-grid-columns(@columns, @class, offset);
+}
+
+.make-grid() {
+  .loop-grid-columns(@columns, width);
+  .loop-grid-columns(@columns, offset);
+}
