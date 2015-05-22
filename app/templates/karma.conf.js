@@ -14,9 +14,9 @@ module.exports = function(config) {
     files: [
       'public/dist/js/lib/detect-mobile.js',
       'public/dist/js/lib/modernizr.custom.js',
-      'public/dist/js/lib/jquery.min.js',
-      'public/dist/js/lib/underscore-min.js',
-      'public/dist/js/lib/backbone-min.js',
+      'http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js',
+      'http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js',
+      'http://apps.bdimg.com/libs/backbone.js/1.1.2/backbone-min.js',
       'public/js/app.js',
       'public/js/modules/*.js',
       'test/**/*.js'

@@ -100,7 +100,7 @@ module.exports = yeoman.generators.Base.extend({
     mkdirp('public/dist/fonts');
     mkdirp('public/dist/images');
     mkdirp('public/dist/js');
-    mkdirp('public/dist/lib');
+    mkdirp('public/dist/js/lib');
     mkdirp('public/js');
     mkdirp('public/less');
     mkdirp('public/less/lib');
