@@ -115,7 +115,7 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copy(this.templatePath('js/lib/detect-mobile.js'), 'public/dist/js/lib/detect-mobile.js');
     this.fs.copy(this.templatePath('js/lib/jquery.min.js'), 'public/dist/js/lib/jquery.min.js');
     this.fs.copy(this.templatePath('js/lib/modernizr.custom.js'), 'public/dist/js/lib/modernizr.custom.js');
-    this.fs.copy(this.templatePath('js/app.js'), 'public/js/app.js');
+    this.template(this.templatePath('js/app.js'), 'public/js/app.js');
 
     this.fs.copy(this.templatePath('js/lib/underscore-min.js'), 'public/dist/js/lib/underscore-min.js');
     this.fs.copy(this.templatePath('less/lib/lesshat.less'), 'public/less/lib/lesshat.less');
@@ -138,19 +138,31 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   grunt: function () {
-    var uglifyFileName = 'public/dist/js/' + this.appname.toLowerCase() + '.min.js',
+    var concatFileName = 'public/dist/js/' + this.appname.toLowerCase() + '.js',
+        uglifyFileName = 'public/dist/js/' + this.appname.toLowerCase() + '.min.js',
         lessFileName = 'public/dist/css/' + this.appname.toLowerCase() + '.min.css',
-        uglify = {
+        concat = {
+          options: {
+            sourceMap: true
+          },
           out: {
-            options: {
-              preserveComments: false
-            },
+            files: {}
+          }
+        },
+        uglify = {
+          options: {
+            preserveComments: false
+          },
+          out: {
             files: {}
           }
         },
         less = {
           options: {
-            compress: true
+            compress: true,
+            sourceMap: true,
+            sourceMapURL: this.appname.toLowerCase() + '.min.css.map',
+            sourceMapRootpath: '/'
           },
           out: {
             files: {}
@@ -167,31 +179,38 @@ module.exports = yeoman.generators.Base.extend({
             files: ['public/less/**/*'],
             tasks: ['less']
           },
+          uglify: {
+            files: ['public/js/**/*.js'],
+            tasks: ['uglify']
+          },
           karma: {
             files: ['public/js/**/*.js', 'test/**/*.js'],
             tasks: ['karma:unit:run']
           }
         };
 
+    concat.out.files[concatFileName] =
     uglify.out.files[uglifyFileName] = [
       'public/js/app.js',
       'public/js/modules/*.js'
     ];
     less.out.files[lessFileName] = ['public/less/base.less'];
 
+    this.gruntfile.insertConfig('concat', JSON.stringify(concat));
     this.gruntfile.insertConfig('uglify', JSON.stringify(uglify));
     this.gruntfile.insertConfig('less', JSON.stringify(less));
     this.gruntfile.insertConfig('karma', JSON.stringify(karma));
     this.gruntfile.insertConfig('watch', JSON.stringify(watch));
 
     this.gruntfile.loadNpmTasks([
+      'grunt-contrib-concat',
       'grunt-contrib-less',
       'grunt-contrib-uglify',
       'grunt-contrib-watch',
       'grunt-karma'
     ]);
 
-    this.gruntfile.registerTask('default', ['less', 'uglify', 'karma', 'watch']);
+    this.gruntfile.registerTask('default', ['concat', 'less', 'uglify', 'karma', 'watch']);
   }
 });
 

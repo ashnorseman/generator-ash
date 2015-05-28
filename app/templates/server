@@ -33,6 +33,7 @@ app.set('port', process.env.PORT || PORT);
 // --------------------------
 
 app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 app.use('/db', express.static(__dirname + '/db'));
 
 
