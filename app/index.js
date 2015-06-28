@@ -102,12 +102,14 @@ module.exports = yeoman.generators.Base.extend({
     mkdirp('public/dist/js');
     mkdirp('public/dist/js/lib');
     mkdirp('public/js');
+    mkdirp('public/js/modules');
     mkdirp('public/less');
     mkdirp('public/less/lib');
     mkdirp('public/less/modules');
     mkdirp('public/less/settings');
     mkdirp('public/views');
     mkdirp('test');
+    mkdirp('test/spec');
     mkdirp('views');
     mkdirp('views/layouts');
 
@@ -142,16 +144,14 @@ module.exports = yeoman.generators.Base.extend({
         uglifyFileName = 'public/dist/js/' + this.appname.toLowerCase() + '.min.js',
         lessFileName = 'public/dist/css/' + this.appname.toLowerCase() + '.min.css',
         concat = {
-          options: {
-            sourceMap: true
-          },
           out: {
             files: {}
           }
         },
         uglify = {
           options: {
-            preserveComments: false
+            preserveComments: false,
+            sourceMap: true
           },
           out: {
             files: {}
