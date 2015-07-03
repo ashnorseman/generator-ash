@@ -15,7 +15,7 @@ module.exports = function(config) {
       'public/dist/js/lib/detect-mobile.js',
       'public/dist/js/lib/modernizr.custom.js',
       'public/dist/js/lib/jquery.min.js',
-      'public/dist/js/lib/unserscore-min.js',
+      'public/dist/js/lib/underscore-min.js',
       'public/dist/js/lib/backbone-min.js',
       'public/js/app.js',
       'public/js/modules/*.js',
