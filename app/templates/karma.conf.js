@@ -7,16 +7,16 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'sinon-chai'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
       'public/dist/js/lib/detect-mobile.js',
       'public/dist/js/lib/modernizr.custom.js',
-      'http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js',
-      'http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js',
-      'http://apps.bdimg.com/libs/backbone.js/1.1.2/backbone-min.js',
+      'public/dist/js/lib/jquery.min.js',
+      'public/dist/js/lib/unserscore-min.js',
+      'public/dist/js/lib/backbone-min.js',
       'public/js/app.js',
       'public/js/modules/*.js',
       'test/**/*.js'

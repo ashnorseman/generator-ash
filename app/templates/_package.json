@@ -21,8 +21,7 @@
     "grunt-karma": "^0.10.1",
     "karma": "^0.12.32",
     "karma-chrome-launcher": "^0.1.12",
-    "karma-mocha": "^0.1.10",
-    "karma-sinon-chai": "^0.3.0",
+    "karma-jasmine": "^0.3.6",
     "nodemon": "latest"
   }
 }

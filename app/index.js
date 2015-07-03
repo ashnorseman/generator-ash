@@ -1,8 +1,3 @@
-/**
- * Created by Ash.Zhang on 2015/5/20.
- */
-
-
 'use strict';
 
 var mkdirp = require('mkdirp'),
@@ -150,8 +145,7 @@ module.exports = yeoman.generators.Base.extend({
         },
         uglify = {
           options: {
-            preserveComments: false,
-            sourceMap: true
+            preserveComments: false
           },
           out: {
             files: {}
@@ -178,6 +172,10 @@ module.exports = yeoman.generators.Base.extend({
           css: {
             files: ['public/less/**/*'],
             tasks: ['less']
+          },
+          concat: {
+            files: ['public/js/**/*.js'],
+            tasks: ['concat']
           },
           uglify: {
             files: ['public/js/**/*.js'],
